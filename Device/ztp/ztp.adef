@@ -1,0 +1,23 @@
+
+executables:
+{
+    ztp = ( ztpComponent )
+}
+
+processes:
+{
+    run:
+    {
+        ( ztp )
+    }
+}
+
+start: manual
+
+bindings:
+{
+    ztp.ztpComponent.le_avdata -> avcService.le_avdata
+    ztp.ztpComponent.le_secStore  -> secStore.secStoreGlobal
+}
+
+sandboxed: false

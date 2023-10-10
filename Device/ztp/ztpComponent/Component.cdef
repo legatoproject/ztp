@@ -1,0 +1,13 @@
+requires:
+{
+    api:
+    {
+        airVantage/le_avdata.api
+        le_secStore.api
+    }
+}
+
+sources:
+{
+    main.c
+}

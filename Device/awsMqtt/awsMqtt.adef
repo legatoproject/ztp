@@ -1,0 +1,22 @@
+executables:
+{
+    awsMqtt = ( awsMqttComponent )
+}
+
+bindings:
+{
+    awsMqtt.awsMqttComponent.le_data -> dataConnectionService.le_data
+    awsMqtt.awsMqttComponent.le_secStore  -> secStore.secStoreGlobal
+}
+
+processes:
+{
+    run:
+    {
+        ( awsMqtt )
+    }
+}
+
+sandboxed: false
+
+start: manual
