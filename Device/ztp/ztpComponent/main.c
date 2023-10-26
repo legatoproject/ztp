@@ -85,7 +85,11 @@ static void EndpointSettingHandler
         LE_ERROR("Error in getting latest ENDPOINT");
     } else {
         LE_INFO("ENDPOINT from server is ==> %s", EndpointSet);
-        FILE * fd = fopen ("/home/root/ztp/aws_iot_endpoint.txt", "w");
+        FILE * fd = fopen("/home/root/ztp/aws_iot_endpoint.txt", "w");
+        if (fd == NULL) {
+		    LE_ERROR("Endpoint file could not be created");
+            exit(EXIT_FAILURE);
+        } 
         fwrite (EndpointSet, sizeof(char), strlen(EndpointSet), fd);
         fclose (fd);
         LE_INFO("ENDPOINT file written!");        
@@ -132,7 +136,11 @@ static void CertSettingHandler
         LE_INFO("CERT4 from server is ==> %s", CertSet4);
         LE_INFO("CERT5 from server is ==> %s", CertSet5);
         LE_INFO("CERT6 from server is ==> %s", CertSet6);
-        FILE * fd = fopen ("/home/root/ztp/aws_iot_cert.pem.crt", "w");
+        FILE * fd = fopen("/home/root/ztp/aws_iot_cert.pem.crt", "w");
+        if (fd == NULL) {
+		    LE_ERROR("Certificate file could not be created");
+            exit(EXIT_FAILURE);
+        } 
         fwrite (CertSet1, sizeof(char), strlen(CertSet1), fd);
         fwrite (CertSet2, sizeof(char), strlen(CertSet2), fd);
         fwrite (CertSet3, sizeof(char), strlen(CertSet3), fd);
@@ -179,14 +187,19 @@ void PushResources(le_timer_Ref_t  timerRef)
     if (NULL != avcEventHandlerRef)
     {
         int fd = open("/home/root/ztp/aws_iot_csr.csr", O_RDONLY);
+        if (fd < 0) {
+		    LE_ERROR("CSR file could not be accessed");
+            exit(EXIT_FAILURE);
+        }
         le_result_t r = le_avdata_PushStream("CSR_STREAM", fd, PushCallbackHandler, NULL);
         if (r != LE_OK)
         {
-            LE_ERROR("Failed to push stream - fd=%d - %s", fd, LE_RESULT_TXT(r));
+            LE_ERROR("Failed to push CSR over stream - fd=%d - %s", fd, LE_RESULT_TXT(r));
+            exit(EXIT_FAILURE);
         }
         else
         {
-            LE_INFO("PushStream return OK - fd=%d", fd);
+            LE_INFO("CSR succesfully pushed over stream - fd=%d", fd);
         }        
         close(fd);
     }
@@ -249,8 +262,8 @@ static void createPrivateKeyAndCSR()
     // generate private key
     FILE *fpk = popen("/usr/bin/openssl genrsa 2048", "r");
     if (fpk == NULL) {
-        printf("Failed to run command\n" );
-        exit(1);
+        LE_ERROR("Failed to run openssl command to generate key\n" );
+        exit(EXIT_FAILURE);
     }
 
     // read the output a line at a time
@@ -267,16 +280,16 @@ static void createPrivateKeyAndCSR()
     // generate CSR
     FILE *fcsr = popen("/usr/bin/openssl req -new -key - -out /home/root/ztp/aws_iot_csr.csr -subj \"/C=ES/ST=Madrid/L=Madrid/O=Semtech, Inc./OU=IT/CN=ztp.semtech.com\"", "w");
     if (fcsr == NULL) {
-        printf("Failed to run command\n" );
-        exit(1);
+        LE_ERROR("Failed to run openssl command to generate CSR\n" );
+        exit(EXIT_FAILURE);
     }
     
     // Inject private key to stdin
     const size_t privateKeyLen = strlen(privateKey);
     size_t nNumWritten = fwrite(privateKey, 1, privateKeyLen, fcsr);
     if (nNumWritten != privateKeyLen) {
-        printf("Failed to inject stdin\n" );
-        exit(1);
+        LE_ERROR("Failed to inject private key via stdin to openssl to generate CSR\n" );
+        exit(EXIT_FAILURE);
     }
     
     // close
@@ -286,7 +299,12 @@ static void createPrivateKeyAndCSR()
     
     // Write the SECRET_ITEM.
     le_result_t result = le_secStore_Write(SECRET_ITEM, (uint8_t*)privateKey, sizeof(privateKey));
-    LE_INFO("Write secret to sec store.  %s.", LE_RESULT_TXT(result));
+    if (result == LE_OK) { 
+        LE_INFO("Succesfully write secret to sec store.  %s.", LE_RESULT_TXT(result));
+    } else {
+        LE_ERROR("Failed to write secret to sec store\n" );
+        exit(EXIT_FAILURE);
+    }
 }
 
 COMPONENT_INIT
@@ -312,7 +330,7 @@ COMPONENT_INIT
     if (NULL == sessionRequestRef)
     {
         LE_ERROR("AirVantage Connection Controller does not start.");
-    } else{
+    } else {
         sessionRef=sessionRequestRef;
         LE_INFO("AirVantage Connection Controller started.");
     }

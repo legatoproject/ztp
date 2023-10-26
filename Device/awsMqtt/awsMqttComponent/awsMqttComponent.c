@@ -17,9 +17,9 @@
 #include "aws_iot_version.h"
 #include "aws_iot_mqtt_client_interface.h"
 
-#define TIMEOUT_SECS    30
+#define TIMEOUT_SECS 30
 #define SECRET_ITEM "aws private key"
-
+#define MSG_PAYLOAD_MAX 50
 /**
  * @brief Default cert location
  */
@@ -112,14 +112,17 @@ static int run_main()
 
 	// dowload AmazonCA cert
 	if (access("/home/root/ztp/AmazonRootCA1.pem", F_OK) != 0) {
-		system("curl -o /home/root/ztp/AmazonRootCA1.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem");
+		if (system("curl -o /home/root/ztp/AmazonRootCA1.pem https://www.amazontrust.com/repository/AmazonRootCA1.pem") != 0) {
+			LE_ERROR("AWS CA cert could not be downloaded");
+        	exit(EXIT_FAILURE);
+		}
 	}
 
     // read AWS IoT Core endpoint
     FILE * fp = fopen("/home/root/ztp/aws_iot_endpoint.txt", "r");
     if (fp == NULL) {
 		LE_ERROR("AWS IoT Core endpoint file not found");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     HostAddress = (char *)malloc(HostAddressSize * sizeof(char));
     getline(&HostAddress, &HostAddressSize, fp);
@@ -148,6 +151,10 @@ static int run_main()
     le_result_t result = le_secStore_Read(SECRET_ITEM, (uint8_t*)privateKeyFromKeyStore, &privateKeyFromKeyStoreSize);
     LE_INFO("Read secret from sec store.  %s.", LE_RESULT_TXT(result));
     FILE * fd = fopen(clientKey, "w");
+    if (fd == NULL) {
+		LE_ERROR("Private key temporary file could not be created");
+        exit(EXIT_FAILURE);
+    }    
     fwrite(privateKeyFromKeyStore, sizeof(char), strlen(privateKeyFromKeyStore), fd);
     fclose(fd);
 
@@ -182,6 +189,7 @@ static int run_main()
     else
     {    
 		LE_ERROR("Error removing secret key file");
+        exit(EXIT_FAILURE);
     }
     
 	/*
@@ -196,7 +204,7 @@ static int run_main()
 		return rc;
 	}
 
-	sprintf(cPayload, "%s : %d ", "test from ZTP ", i);
+	snprintf(cPayload, MSG_PAYLOAD_MAX + 1, "%s : %d ", "test from ZTP ", i);
 
 	paramsQOS0.qos = QOS0;
 	paramsQOS0.payload = (void *)cPayload;
@@ -220,7 +228,7 @@ static int run_main()
 
 		LE_INFO("Sleeping and publishing ...");
 		sleep(1);
-		sprintf(cPayload, "%s : %d ", "test from ZTP with QOS0 ", i++);
+		snprintf(cPayload, MSG_PAYLOAD_MAX + 1, "%s : %d ", "test from ZTP with QOS0 ", i++);
 		paramsQOS0.payloadLen = strlen(cPayload);
 		rc = aws_iot_mqtt_publish(&client, "ztp/fx30s", strlen("ztp/fx30s"), &paramsQOS0);
 		if (publishCount > 0)
@@ -245,6 +253,8 @@ static int run_main()
 	{
 		LE_INFO("Publish done\n");
 	}
+	
+	free(HostAddress);
 
 	return rc;
 }
