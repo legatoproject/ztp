@@ -86,13 +86,9 @@ In order to build and install the MQTT client Legato app, follow the instruction
 
 1. Create a new folder (awsMqtt) under ~/myWorkspace/apps
 
-2. Copy the contents of the Device/awsMqtt folder within this repo to ~/myWorkspace/apps/awsMqtt
+2. Copy the contents of the Device/awsMqtt folder within this repo to ~/myWorkspace/apps/awsMqtt (please note that this app is based on a modified subset of AWS IoT Device SDK for Embedded C from https://github.com/aws/aws-iot-device-sdk-embedded-C/ and its dependencies such as Mbed TLS)
 
-3. Download AWS IoT Device SDK for Embedded C from https://github.com/aws/aws-iot-device-sdk-embedded-C/archive/refs/tags/v2.3.0.zip and unzip its contents inside ~/myWorkspace/apps/awsMqtt
-
-4. Download Mbed TLS from https://github.com/Mbed-TLS/mbedtls/archive/refs/tags/mbedtls-2.1.14.zip and unzip its contents inside ~/myWorkspace/apps/awsMqtt/external_libs/mbedTLS
-
-5. Run the following commands to build the MQTT client app within your Legato dev env
+3. Run the following commands to build the MQTT client app within your Legato dev env
 
     ```
     cd ~/myWorkspace
@@ -106,7 +102,7 @@ In order to build and install the MQTT client Legato app, follow the instruction
     av-pack -u awsMqtt.wp77xx.update -b _build_awsMqtt/wp77xx/ -t com.semtech.av.awsmqtt
     ```
 
-6. In order to proceed with the OTA installation of the app to your device, follow the below steps:
+4. In order to proceed with the OTA installation of the app to your device, follow the below steps:
 
     1. Release and publish app on AirVantage (AV/Develop/MyApps -> Release (check Publish in Advanced Settings)). Please refer to [AirVantage User Guide - Develop](https://doc.airvantage.net/av/reference/develop/) for reference
     
