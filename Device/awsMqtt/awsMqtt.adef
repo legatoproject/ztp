@@ -1,12 +1,12 @@
 executables:
 {
-    awsMqtt = ( awsMqttComponent )
+    awsMqtt = ( mqttDemoMutualAuth )
 }
 
 bindings:
 {
-    awsMqtt.awsMqttComponent.le_data -> dataConnectionService.le_data
-    awsMqtt.awsMqttComponent.le_secStore  -> secStore.secStoreGlobal
+    awsMqtt.mqttDemoMutualAuth.le_data -> dataConnectionService.le_data
+    awsMqtt.mqttDemoMutualAuth.le_secStore  -> secStore.secStoreGlobal
 }
 
 processes:

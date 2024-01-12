@@ -1,0 +1,155 @@
+sources:
+{
+    mqtt_demo_mutual_auth.c
+    
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/camellia.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_tls13_keys.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/x509_create.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_cookie.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ctr_drbg.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/constant_time.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/pk_wrap.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/pkcs5.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/version.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/x509_crl.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/error.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/xtea.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/aes.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ripemd160.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/md.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/hmac_drbg.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_mac.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/base64.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/x509.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/x509write_csr.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_aead.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/threading.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_srv.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/pem.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/x509_csr.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/memory_buffer_alloc.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ecdsa.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/blowfish.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/poly1305.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_driver_wrappers.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/timing.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/chachapoly.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ecp.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/oid.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_its_file.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/entropy_poll.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/pkcs12.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ecdh.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/hkdf.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/havege.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/rsa_internal.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/platform.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_se.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_rsa.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/md4.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_tls.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_ticket.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/version_features.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/platform_util.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/x509_crt.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/asn1parse.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_slot_management.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/net_sockets.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_ecp.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/dhm.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/x509write_crt.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ccm.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/sha512.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/cmac.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_storage.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_cache.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/aria.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_client.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/md5.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/sha256.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/sha1.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/pkwrite.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/debug.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/pk.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/mps_trace.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/md2.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/asn1write.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/mps_reader.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/arc4.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/padlock.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/aesni.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ecp_curves.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/cipher.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_cipher.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_msg.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/entropy.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_cli.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/des.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/chacha20.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ecjpake.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/psa_crypto_hash.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/rsa.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/ssl_ciphersuites.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/nist_kw.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/pkparse.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/cipher_wrap.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/certs.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/bignum.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/3rdparty/mbedtls/library/gcm.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/standard/coreMQTT/source/core_mqtt.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/standard/coreMQTT/source/core_mqtt_state.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/standard/coreMQTT/source/core_mqtt_serializer.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/libraries/standard/backoffAlgorithm/source/backoff_algorithm.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/platform/posix/clock_posix.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/platform/posix/transport/src/openssl_posix.c
+    $CURDIR/../aws-iot-device-sdk-embedded-C/platform/posix/transport/src/sockets_posix.c
+}
+
+requires:
+{
+    lib:
+    {
+        curl
+    }
+
+    api:
+    {
+        le_data.api
+        le_secStore.api 
+    }
+    
+    component:
+    {
+        ${LEGATO_ROOT}/components/3rdParty/openssl
+        ${LEGATO_ROOT}/components/3rdParty/curl
+    }
+}
+
+bundles:
+{
+    file:
+    {
+        #if file_exists(${LEGATO_SYSROOT}/usr/lib/libgnutls.so.30)
+            ${LEGATO_SYSROOT}/usr/lib/libgnutls.so.30 /usr/lib/
+        #elif file_exists(${LEGATO_SYSROOT}/usr/lib/libgnutls.so.28)
+            ${LEGATO_SYSROOT}/usr/lib/libgnutls.so.28 /usr/lib/
+        #endif
+
+        #if file_exists(${LEGATO_SYSROOT}/usr/lib/libidn.so.11)
+            ${LEGATO_SYSROOT}/usr/lib/libidn.so.11 /usr/lib/
+        #endif
+
+        #if file_exists(${LEGATO_SYSROOT}/usr/lib/libnettle.so.6)
+            ${LEGATO_SYSROOT}/usr/lib/libnettle.so.6 /usr/lib/
+        #elif file_exists(${LEGATO_SYSROOT}/usr/lib/libnettle.so.4)
+            ${LEGATO_SYSROOT}/usr/lib/libnettle.so.4 /usr/lib/
+        #endif
+
+        #if file_exists(${LEGATO_SYSROOT}/usr/lib/libhogweed.so.4)
+            ${LEGATO_SYSROOT}/usr/lib/libhogweed.so.4 /usr/lib/
+        #elif file_exists(${LEGATO_SYSROOT}/usr/lib/libhogweed.so.2)
+            ${LEGATO_SYSROOT}/usr/lib/libhogweed.so.2 /usr/lib/
+        #endif
+    }    
+}
